@@ -13,7 +13,7 @@ class User:
 
 def searchErrorMsg() -> bool:
     try: 
-        pyautogui.locateOnScreen('errormsg3.png')
+        pyautogui.locateOnScreen('errormsg.png')
         return True
     except pyautogui.ImageNotFoundException:
         return False
