@@ -10,14 +10,6 @@ class User:
         self.login = login
         self.cpf = cpf
 
-
-def searchErrorMsg() -> bool:
-    try: 
-        pyautogui.locateOnScreen('errormsg.png')
-        return True
-    except pyautogui.ImageNotFoundException:
-        return False
-
 def loadData(file : str):
     with open(file, newline='', encoding="utf8") as dataFile:
         data = csv.reader(dataFile, delimiter=',')

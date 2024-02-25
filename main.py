@@ -1,46 +1,53 @@
 import pyautogui
 from keyboard import write
 from pyautogui import click
-from util import loadData, User, searchErrorMsg
+from util import loadData, User
 from config import SPEED, FILE_NAME
 # 10 Segundos para mudar para a pagina do sistema
-pyautogui.time.sleep(5)
-
+pyautogui.time.sleep(2)
+pyautogui.PAUSE = 0.2
 def cadastro():
     userList : list[User] = loadData(FILE_NAME)    
     # Usuarios
-    click(130,371, duration=SPEED)
+    click(164,369, duration=SPEED)
 
     for user in userList:
-    #Novo 
-        click(150,400, duration=SPEED)
+        #Novo 
+        click(130,405, duration=SPEED)
+        pyautogui.time.sleep(4)
         # Orgão
-        click(455,315, duration=SPEED)
+        click(470,309, duration=SPEED)
         # PMFI
-        click(455,350, duration=SPEED)
+        click(463,351, duration=SPEED)
         # Sigla
-        click(455,370, duration=SPEED)
+        click(460,366, duration=SPEED)
         # Digitando sigla
         write(user.login)
         # Nome
-        click(455,430, duration=SPEED)
+        click(458,424, duration=SPEED)
         # Digitando nome
         write(user.name)
         # CPF
-        click(455,600, duration=SPEED)
+        click(453,602, duration=SPEED)
         # Preenchendo CPF
         write(user.cpf)
         # Email
-        click(455,660, duration=SPEED)
+        click(452,662, duration=SPEED)
         # Preenchendo email
         write(user.email)
         # Salvar
-        click(1793,244, duration=SPEED)
-        pyautogui.time.sleep(2)
-        errorMsgExists = searchErrorMsg()
-        if errorMsgExists:
+        click(1795,244, duration=SPEED)
+        pyautogui.time.sleep(6)
+        try:
+            pyautogui.locateOnScreen('errormsg.png')
+            # Cancelar
             click(1867,245, duration=SPEED)
-        click(130,371, duration=SPEED)
+            pyautogui.time.sleep(7)
+        except pyautogui.ImageNotFoundException:
+            pass
+        click(164,371, duration=SPEED)
+
+      
     
 
 if __name__ == "__main__":
