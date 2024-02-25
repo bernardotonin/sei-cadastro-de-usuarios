@@ -4,7 +4,7 @@ from pyautogui import click
 from util import loadData, User
 from config import SPEED, FILE_NAME
 # 10 Segundos para mudar para a pagina do sistema
-pyautogui.time.sleep(2)
+pyautogui.time.sleep(10)
 pyautogui.PAUSE = 0.2
 def cadastro():
     userList : list[User] = loadData(FILE_NAME)    
