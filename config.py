@@ -1,2 +1,3 @@
 SPEED = 0.25
-FILE_NAME = 'dados.csv'
+USER_FILE_NAME = 'dados.csv'
+UNIDADES_FILE_NAME = 'unidades.csv'

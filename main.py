@@ -1,13 +1,13 @@
 import pyautogui
 from keyboard import write
 from pyautogui import click
-from util import loadData, User
+from util import loadUsers, loadUnidades, User, Unidade
 from config import SPEED
 # 10 Segundos para mudar para a pagina do sistema
-pyautogui.time.sleep(10)
+pyautogui.time.sleep(3)
 
-def cadastro():
-    userList : list[User] = loadData()    
+def cadastroUsuarios():
+    userList : list[User] = loadUsers()    
     # Usuarios
     click(120,343, duration=SPEED)
     for user in userList:
@@ -46,5 +46,31 @@ def cadastro():
             pass
         click(120,343, duration=SPEED)
 
+def cadastroUnidades():
+    unidades : list[Unidade] = loadUnidades()
+    # unidades
+    click(151,307, duration=SPEED)
+    for unidade in unidades:
+        # nova
+        click(141,342, duration=SPEED)
+        pyautogui.time.sleep(1)
+        # sigla
+        click(422,334, duration=SPEED)
+        write(unidade.sigla)
+        # Nome
+        click(427,392, duration=SPEED)
+        write(unidade.nome)
+        # salvar
+        click(1795,214, duration=SPEED)
+        pyautogui.time.sleep(2)
+        try:
+            pyautogui.locateOnScreen('errormsgunid.png')
+            # Cancelar
+            click(1864,215, duration=SPEED)
+            pyautogui.time.sleep(1)
+        except pyautogui.ImageNotFoundException:
+            pass
+        click(151,307, duration=SPEED)    
+
 if __name__ == "__main__":
-    cadastro()
+    cadastroUsuarios()

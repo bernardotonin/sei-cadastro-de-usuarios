@@ -1,4 +1,4 @@
-from config import FILE_NAME
+from config import USER_FILE_NAME, UNIDADES_FILE_NAME
 import csv
 
 class User:
@@ -8,11 +8,25 @@ class User:
         self.login = login
         self.cpf = cpf
 
-def loadData() -> list[User]:
-    with open(FILE_NAME, newline='', encoding="utf8") as dataFile:
+class Unidade:
+    def __init__(self, sigla, nome):
+        self.sigla = sigla
+        self.nome = nome
+
+def loadUsers() -> list[User]:
+    with open(USER_FILE_NAME, newline='', encoding="utf8") as dataFile:
         data = csv.reader(dataFile, delimiter=',')
-        userList : list[User] = []
+        users : list[User] = []
         for row in data:
             x = User(row[0].title(), row[1], row[2], row[3])
-            userList.append(x)
-    return userList
+            users.append(x)
+    return users
+
+def loadUnidades() -> list[Unidade]:
+    with open(UNIDADES_FILE_NAME, newline='', encoding="utf8") as dataFile:
+        data = csv.reader(dataFile, delimiter=',')
+        unidades : list[Unidade] = []
+        for row in data:
+           x = Unidade(row[0].upper(), row[1].title())
+           unidades.append(x)
+    return unidades
