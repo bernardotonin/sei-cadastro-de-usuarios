@@ -1,2 +1,2 @@
-SPEED = 0.6
+SPEED = 0.25
 FILE_NAME = 'dados.csv'
